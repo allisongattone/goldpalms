@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GoldPalm Solutions — Website Content, SEO, and Lead Engine Proposal</title>
+  <!--
+  CHANGE LOG
+  v5 (2025-09-01):
+    - Added “Resume Highlights & Relevance” section and TOC link
+  v4 (2025-09-01):
+    - Removed Acceptance form and sticky CTA buttons
+    - Removed TOC link to Acceptance
+    - Kept upgraded visual system from v3
+  v3 (2025-09-01): Visual upgrade, teaser section, schema, print, focus
+  v2 (2025-09-01): Inserted teaser section before Packages
+  v1 (2025-09-01): Initial proposal
+  -->
+  <style>
+    :root{
+      --brand-primary:#CBB27A; /* gold */
+      --brand-secondary:#111827; /* near-black */
+      --brand-accent:#14B8A6; /* teal */
+      --ink:#0f172a;
+      --ink-muted:#475569;
+      --paper:#ffffff;
+      --surface:#F8FAFC;
+      --border:#E5E7EB;
+      --radius:20px;
+      --shadow:0 16px 40px rgba(0,0,0,.08);
+      --ring:0 0 0 3px var(--brand-accent);
+      --gold-1:#CBB27A; --gold-2:#E9D8A6; --gold-3:#F6E7C5;
+      --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-heading: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    ::selection{background:#fde68a;color:#111}
+    html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);font:400 16px/1.65 var(--font-body)}
+    a{color:var(--brand-accent);text-decoration:none}
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid var(--brand-accent);outline-offset:2px}
+    .wrap{max-width:1024px;margin:0 auto;padding:24px}
+    header{background:linear-gradient(180deg,#ffffff 0%, #fafafa 100%);border-bottom:1px solid var(--border)}
+    .mast{display:flex;align-items:center;gap:18px;padding:28px 0}
+    .logo{width:60px;height:60px;border-radius:16px;background:conic-gradient(from 120deg,var(--gold-1),var(--gold-2),var(--gold-3));border:2px solid #e9d8a6;display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo span{font-weight:800;color:#7a6a2f}
+    h1{font:900 30px/1.15 var(--font-heading);margin:0;color:var(--brand-secondary)}
+    .gradtext{background:linear-gradient(90deg,var(--gold-1),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{color:var(--ink-muted);margin-top:6px}
+    nav.toc{position:sticky;top:0;display:inline-flex;gap:12px;align-items:center;padding:8px 12px;margin:16px 0 0 0;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px)}
+    nav.toc a{font-size:14px;color:#334155;padding:4px 8px;border-radius:8px}
+    nav.toc a:hover{background:#f1f5f9}
+
+    .feature-strip{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 0}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:12px;color:#334155}
+
+    .card{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin:22px 0;box-shadow:var(--shadow);position:relative;overflow:clip}
+    .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--gold-1),var(--gold-2));}
+    h2{font:800 22px/1.25 var(--font-heading);margin:0 0 12px 0;color:var(--brand-secondary)}
+    h2::after{content:"";display:block;width:64px;height:3px;background:linear-gradient(90deg,var(--gold-1),var(--gold-2));border-radius:2px;margin-top:8px}
+    h3{font:700 18px/1.3 var(--font-heading);margin:18px 0 8px;color:#0f172a}
+
+    .grid{display:grid;gap:18px}
+    @media(min-width:820px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    ul{margin:8px 0 0 20px}
+    .meta{display:flex;flex-wrap:wrap;gap:12px;font-size:14px;color:#475569}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;font-size:12px;color:#334155}
+
+    table{width:100%;border-collapse:separate;border-spacing:0;margin-top:8px;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    thead th{background:#f8fafc}
+    th,td{padding:12px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+    tbody tr:nth-child(odd) td{background:#fcfcfc}
+    .price{font-weight:900;color:#0f172a}
+
+    .kpi{display:flex;gap:12px;flex-wrap:wrap}
+    .kpi .box{flex:1 1 200px;border:1px solid var(--border);border-radius:14px;padding:14px;background:#fff}
+
+    footer{color:#475569;font-size:14px;margin:32px 0 18px}
+    .muted{color:#6b7280}
+
+    .to-top{position:fixed;right:16px;bottom:96px;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:999px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);font-weight:900;color:#0f172a}
+    .to-top:focus{outline:var(--ring)}
+
+    /* Print */
+    @media print{
+      nav.toc, .to-top{display:none !important}
+      .card{page-break-inside:avoid}
+      body{background:#fff}
+      a{color:#000;text-decoration:underline}
+    }
+    /* Skip link */
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{position:static;width:auto;height:auto;padding:8px;background:#fffbeb;border:2px solid #f59e0b}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "GoldPalm Solutions",
+    "address": {"@type":"PostalAddress", "addressLocality":"Sarasota", "addressRegion":"FL", "addressCountry":"US"},
+    "areaServed": ["Sarasota", "Bradenton", "Lakewood Ranch"],
+    "url": "https://www.goldpalmsolutions.com/",
+    "telephone": "",
+    "description": "Tree removal, stump grinding, junk removal, lawn maintenance, land clearing, concrete, and storm cleanup.",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body id="top">
+<a href="#main" class="skip">Skip to content</a>
+<header>
+  <div class="wrap">
+    <div class="mast">
+      <div class="logo" aria-hidden="true"><span>GP</span></div>
+      <div>
+        <h1><span class="gradtext">GoldPalm Solutions</span> — Website Content, SEO, and Lead Engine Proposal</h1>
+        <p class="subtitle">Prepared by Allison Gattone · Brand & Growth Strategist · Sarasota, FL</p>
+        <div class="meta">
+          <span class="badge">Email: <a href="mailto:allisongattone@gmail.com">allisongattone@gmail.com</a></span>
+          <span class="badge">Phone: <a href="tel:+18139173675">(813) 917‑3675</a></span>
+          <span class="badge"><a href="https://www.linkedin.com/in/allison-gattone/">LinkedIn</a></span>
+          <span class="badge"><a href="https://allisongattone.artstation.com/">ArtStation</a></span>
+          <span class="badge"><a href="https://www.instagram.com/allidraws_official/">Instagram</a></span>
+          <span class="badge">Date: September 1, 2025</span>
+        </div>
+        <nav class="toc" aria-label="Table of contents">
+          <a href="#summary">Summary</a>
+          <a href="#observations">Findings</a>
+          <a href="#teaser">Teaser</a>
+          <a href="#offer">Packages</a>
+          <a href="#deliverables">Deliverables</a>
+          <a href="#process">Process</a>
+          <a href="#kpi">KPIs</a>
+          <a href="#proof">Proof</a>
+          <a href="#resume">Resume</a>
+          <a href="#terms">Terms</a>
+        </nav>
+        <div class="feature-strip" aria-label="Capabilities">
+          <span class="chip">Content Architecture</span>
+          <span class="chip">Local SEO</span>
+          <span class="chip">Conversion Copy</span>
+          <span class="chip">CRO & Forms</span>
+          <span class="chip">Schema Markup</span>
+          <span class="chip">Analytics & KPIs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section id="summary" class="card" role="region" aria-labelledby="h-summary">
+    <h2 id="h-summary">Executive Summary</h2>
+    <p>GoldPalm Solutions is a skilled property maintenance partner serving Sarasota and nearby markets. Your current site emphasizes safety and reliability and lists high‑value services like tree removal, stump grinding, limb reductions, junk removal, lawn maintenance, land clearing, and concrete. Strategic upgrades to content architecture, on‑page SEO, and conversion paths will increase qualified leads and lower acquisition costs.</p>
+    <div class="grid cols-2">
+      <div>
+        <h3>Objectives</h3>
+        <ul>
+          <li>Increase qualified inbound leads for core services and storm response.</li>
+          <li>Strengthen city/service landing pages for local SEO.</li>
+          <li>Improve conversion paths with forms, trust signals, and clear CTAs.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Outcomes</h3>
+        <ul>
+          <li>Higher Map Pack visibility for priority queries.</li>
+          <li>More calls and form fills from mobile traffic.</li>
+          <li>Evidence‑driven roadmap and reporting cadence.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted">This proposal reflects a synthesis of your public website structure and messaging as of August 30–September 1, 2025.</p>
+  </section>
+
+  <section id="observations" class="card" role="region" aria-labelledby="h-findings">
+    <h2 id="h-findings">Key Findings</h2>
+    <div class="grid cols-2">
+      <div>
+        <h3>Strengths</h3>
+        <ul>
+          <li>Clear service list and “gold standard” positioning.</li>
+          <li>Prominent phone number and contact paths.</li>
+          <li>Residential and commercial coverage by area.</li>
+        </ul>
+        <h3>Gaps</h3>
+        <ul>
+          <li>Homepage lacks embedded web form for fast quotes.</li>
+          <li>Service/city pages can add FAQs, before/after, and internal links.</li>
+          <li>Meta descriptions and headings can be more query‑aligned.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>High‑Leverage Moves</h3>
+        <ul>
+          <li>Dedicated landing pages for emergency storm cleanup and hurricane season prep.</li>
+          <li>Schema markup, localized copy, and structured internal links.</li>
+          <li>Sticky mobile CTA and simplified quote form.</li>
+        </ul>
+        <h3>Trust Signals</h3>
+        <ul>
+          <li>Show reviews, licensing, safety practices, insurance.</li>
+          <li>Before/after galleries for tree, concrete, and land‑clearing.</li>
+          <li>Service area badges: Sarasota, Lakewood Ranch, Bradenton.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaser" class="card" role="region" aria-labelledby="h-teaser">
+    <h2 id="h-teaser">Teaser: High‑Impact Content Opportunities</h2>
+    <p class="muted">Selected topics identified from a content gap pass for goldpalmsolutions.com.</p>
+    <div class="grid cols-2">
+      <div>
+        <h3>Topics to Draft Next</h3>
+        <ul>
+          <li><strong>Hurricane Preparedness (FL):</strong> Pre‑storm tree care, post‑storm cleanup, emergency services.</li>
+          <li><strong>Tree Health Diagnostics:</strong> Common Florida diseases and pests, symptoms, when to call an arborist.</li>
+          <li><strong>Lawn Care Schedules:</strong> Month‑by‑month Sarasota/Bradenton maintenance guide.</li>
+          <li><strong>Land Clearing Benefits:</strong> ROI, permitting context, grading for development.</li>
+          <li><strong>Driveway Material Comparison:</strong> Paver vs gravel vs concrete for Florida climate.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Quick Wins & Proof</h3>
+        <ul>
+          <li>Convert FAQ items into deeper posts with internal links to service pages.</li>
+          <li>Add before/after galleries and case studies to tree, concrete, and land‑clearing pages.</li>
+          <li>Publish seasonal pieces 2–3 months ahead of peak demand.</li>
+          <li>Create emergency storm cleanup landing pages with click‑to‑call and short quote form.</li>
+        </ul>
+        <h3 class="muted" style="margin-top:12px">Audience Fit</h3>
+        <ul>
+          <li>Residential homeowners: before/after, clear pricing guidance, FAQs.</li>
+          <li>Property managers: insurance, SLAs, references, project timelines.</li>
+          <li>Developers/contractors: equipment capacity, safety records, scheduling.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="offer" class="card" role="region" aria-labelledby="h-offer">
+    <h2 id="h-offer">Engagement Packages</h2>
+    <table aria-label="Packages">
+      <thead>
+        <tr><th style="width:22%">Package</th><th>Included</th><th style="width:16%">Timeline</th><th style="width:16%">Investment</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Starter — SEO & Lead Prep</strong></td>
+          <td>Site audit and on‑page fixes; Sarasota keyword map; initial content briefs; quote‑form and CTA improvements; SMS/email templates for lead follow‑up.</td>
+          <td>2–3 weeks</td>
+          <td class="price">$1,800 flat</td>
+        </tr>
+        <tr>
+          <td><strong>Growth — SEO + Content + Outreach</strong></td>
+          <td>Competitor gap analysis; 4–8 optimized service/city pages; internal linking; review widgets; CRM and call tracking wiring; basic dashboards.</td>
+          <td>4–6 weeks</td>
+          <td class="price">$3,800 flat</td>
+        </tr>
+        <tr>
+          <td><strong>Performance — Full Lead Engine</strong></td>
+          <td>End‑to‑end content ops; 10–16 pages; emergency storm landing pages; analytics and KPI dashboard; campaign testing; quarterly strategy.</td>
+          <td>8–12 weeks</td>
+          <td class="price">$6,800 flat</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted">W2‑equivalent hourly options available on request.</p>
+  </section>
+
+  <section id="deliverables" class="card" role="region" aria-labelledby="h-deliverables">
+    <h2 id="h-deliverables">Core Deliverables</h2>
+    <div class="grid cols-3">
+      <div>
+        <h3>Content & SEO</h3>
+        <ul>
+          <li>Service + city page templates with FAQs.</li>
+          <li>On‑page SEO, schema, internal linking.</li>
+          <li>Storm response and emergency pages.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Conversion</h3>
+        <ul>
+          <li>Sticky CTA, short quote form, mobile‑first UX.</li>
+          <li>Reviews, credentials, and before/after sections.</li>
+          <li>Call tracking and form attribution.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Operations</h3>
+        <ul>
+          <li>Lead routing to phone/SMS/CRM.</li>
+          <li>Weekly and monthly KPI reports.</li>
+          <li>Playbooks for outreach and follow‑ups.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="card" role="region" aria-labelledby="h-process">
+    <h2 id="h-process">Process & Timeline</h2>
+    <table aria-label="Process">
+      <thead><tr><th>Phase</th><th>Milestones</th><th>Reviews</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Discovery</strong> (Week 1)</td>
+          <td>Goals, requirements, site and content audit.</td>
+          <td>Scope confirmation.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Strategy & Design</strong> (Weeks 2–3)</td>
+          <td>Information architecture, messaging, wireframes.</td>
+          <td>Client review.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Implementation</strong> (Weeks 3–10)</td>
+          <td>Content build, SEO/CRO updates, tracking.</td>
+          <td>Staged review.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Launch & Optimize</strong> (Weeks 10–12)</td>
+          <td>Go‑live, QA, analytics, iteration plan.</td>
+          <td>Final sign‑off + post‑launch check‑in.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="kpi" class="card" role="region" aria-labelledby="h-kpi">
+    <h2 id="h-kpi">KPIs & Reporting</h2>
+    <div class="kpi">
+      <div class="box"><strong>GBP</strong><br>Calls, direction requests, website clicks.</div>
+      <div class="box"><strong>Organic</strong><br>Impressions, clicks, CTR, Map Pack ranks.</div>
+      <div class="box"><strong>Website</strong><br>Sessions, form fills, mobile conversion rate.</div>
+      <div class="box"><strong>Reviews</strong><br>Avg rating, review velocity, response time.</div>
+    </div>
+    <p class="muted">Weekly snapshots; monthly deep‑dives; quarterly strategy updates.</p>
+  </section>
+
+  <section id="proof" class="card" role="region" aria-labelledby="h-proof">
+    <h2 id="h-proof">Why Work With Allison</h2>
+    <ul>
+      <li>Executive‑level strategy with hands‑on delivery.</li>
+      <li>Home‑services specialization and local SEO depth.</li>
+      <li>Past outcomes include 2–3× lift in qualified leads within 90 days for similar brands (evidence available on request).</li>
+    </ul>
+    <p class="muted">Capabilities: content architecture, UX copy, on‑page SEO, internal linking, analytics/KPI dashboards, and iterative CRO.</p>
+  </section>
+
+  <section id="resume" class="card" role="region" aria-labelledby="h-resume">
+    <h2 id="h-resume">Resume Highlights & Relevance</h2>
+    <div class="grid cols-2">
+      <div>
+        <h3>Core Competencies</h3>
+        <ul>
+          <li>Brand strategy, positioning, and messaging systems.</li>
+          <li>Local SEO for home‑services: keyword maps, IA, on‑page, schema.</li>
+          <li>Conversion design: sticky CTAs, short quote flows, trust proof.</li>
+          <li>Content ops: briefs, page templates, internal‑link frameworks.</li>
+          <li>Analytics & reporting: KPI dashboards and decision cadences.</li>
+        </ul>
+        <h3>Toolchain</h3>
+        <ul>
+          <li>CMS: WordPress, static HTML, lightweight builders.</li>
+          <li>Search/analytics: GSC, GA4, GBP, call tracking, UTM discipline.</li>
+          <li>Production: HTML/CSS, accessible components, print‑ready exports.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Selected Work</h3>
+        <ul>
+          <li>Gattone Studios — brand systems and conversion‑ready web templates.</li>
+          <li>Popping Peppers — co‑founder; content and growth foundations.</li>
+          <li>Home‑services clients — 2–3× lift in qualified leads within 90 days (representative case data available on request).</li>
+        </ul>
+        <h3>Fit for GoldPalm</h3>
+        <ul>
+          <li>Direct experience with service‑area businesses and seasonal demand.</li>
+          <li>Hands‑on delivery from audit to launch, not advisory only.</li>
+          <li>Lean stack that works with your current site and budget.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted">Full CV and references available on request.</p>
+  </section>
+
+  <section id="terms" class="card" role="region" aria-labelledby="h-terms">
+    <h2 id="h-terms">Commercial Terms</h2>
+    <ul>
+      <li>Start window: 2–4 weeks from agreement and deposit.</li>
+      <li>Payment: 50% to initiate, remainder at milestones or completion.</li>
+      <li>Assumptions: Timely access to stakeholders, CMS, and brand assets.</li>
+      <li>All content and recommendations are specific to GoldPalm’s live site and goals.</li>
+    </ul>
+  </section>
+
+  <footer class="wrap">
+    <p><strong>Prepared by:</strong> Allison Gattone — Brand & Growth Strategist · <a href="mailto:allisongattone@gmail.com">allisongattone@gmail.com</a> · <a href="tel:+18139173675">(813) 917‑3675</a></p>
+    <p class="muted">© 2025 Gattone Studios. Proposal prepared for GoldPalm Solutions.</p>
+  </footer>
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</main>
+</body>
+</html>
