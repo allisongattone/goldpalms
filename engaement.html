@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gold Palm — One‑Page Handout (Pro Layout v2)</title>
+  <style>
+    :root{
+      --ink:#0f172a; --muted:#475569; --paper:#ffffff; --surface:#f6f8fb; --border:#e2e8f0; --accent:#0ea5e9; --accent-ink:#0b3a55;
+      --ok:#16a34a; --warn:#ca8a04; --danger:#dc2626; --brand:#0ea5e9;
+      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:var(--sans); color:var(--ink); background:var(--surface); line-height:1.5}
+    .page{max-width:1120px; margin:28px auto; padding:0 18px}
+    .sheet{background:var(--paper); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 4px 20px rgba(2,6,23,.04)}
+
+    /* LAYOUT GRID */
+    .grid{display:grid; gap:16px}
+    @media (min-width:1000px){ .grid-main{grid-template-columns:1.2fr .8fr} }
+
+    /* TYPOGRAPHY */
+    h1{font-size:1.6rem; margin:0}
+    h2{font-size:1.06rem; margin:0 0 8px}
+    .lead{color:var(--muted); font-size:.98rem}
+    .tag{font-size:.84rem; padding:4px 10px; border:1px solid var(--border); border-radius:999px; background:#eef6ff; color:var(--accent-ink)}
+    ul{margin:0 0 0 18px}
+    li{margin:4px 0}
+
+    /* CARDS */
+    .card{border:1px solid var(--border); border-radius:14px; padding:16px; background:#fff}
+    .subtle{background:linear-gradient(180deg,#f0f9ff,#fff)}
+
+    /* SECTION LABELS */
+    .label{display:inline-grid; grid-auto-flow:column; align-items:center; gap:8px; margin-bottom:6px}
+    .label .num{width:28px; height:28px; border-radius:50%; background:#e2f3fd; color:#075985; display:grid; place-items:center; font-weight:700}
+
+    /* HERO */
+    .hero{display:grid; gap:14px}
+    @media (min-width:900px){.hero{grid-template-columns:1fr auto; align-items:center}}
+    .stats{display:grid; gap:10px}
+    @media (min-width:520px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .stat{border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:#fff}
+    .stat b{display:block; font-size:1.05rem}
+    .stat small{color:var(--muted)}
+
+    /* SCOPE ICON GRID */
+    .icons{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+    .ico{display:flex; align-items:center; gap:10px; padding:10px; border:1px solid var(--border); border-radius:12px}
+    .dot{width:32px; height:32px; border-radius:50%; background:#e2f3fd; display:grid; place-items:center; font-weight:700; color:#075985}
+
+    /* TWO-COL LISTS */
+    .twocol{display:grid; gap:10px}
+    @media (min-width:680px){.twocol{grid-template-columns:1fr 1fr}}
+
+    /* DELIVERABLES PIPELINE */
+    .pipeline{display:grid; gap:10px}
+    @media (min-width:900px){.pipeline{grid-template-columns:repeat(7,1fr)}}
+    .step{position:relative; padding:10px; border:1px solid var(--border); border-radius:12px; background:#fff; text-align:center}
+    .step .n{width:26px; height:26px; border-radius:50%; background:#eef2f7; display:grid; place-items:center; font-weight:700; margin:0 auto 6px}
+    @media (min-width:900px){ .step::after{content:""; position:absolute; right:-10px; top:50%; transform:translateY(-50%); width:10px; height:2px; background:#cbd5e1} .step:last-child::after{display:none} }
+
+    /* KPI CARDS */
+    .kpi-grid{display:grid; gap:10px}
+    @media (min-width:680px){.kpi-grid{grid-template-columns:1fr 1fr}}
+    .kpi{border:1px solid var(--border); border-radius:12px; padding:12px; background:#fff}
+    .kpi .row{display:grid; grid-template-columns:1fr auto; align-items:center}
+    .bar{height:10px; border-radius:999px; background:#eef2f7; overflow:hidden; margin-top:6px}
+    .fill{height:100%; background:var(--brand); width:0}
+    .kpi small{color:var(--muted)}
+    .meta{display:grid; grid-template-columns:repeat(3,auto); gap:10px; font-size:.86rem; color:var(--muted)}
+
+    /* CONTROLS BADGES */
+    .badges{display:flex; flex-wrap:wrap; gap:8px}
+    .badge{padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#fafcff; font-size:.88rem}
+
+    /* CONTACTS */
+    .kv{display:grid; grid-template-columns:160px 1fr; gap:8px}
+
+    /* PRINT */
+    @media print{
+      body{background:#fff}
+      .page{margin:0; padding:0}
+      .sheet{border:none; border-radius:0; padding:12mm}
+      .subtle{background:#fff}
+    }
+  </style>
+  <script>
+    // Numeric KPI demo values
+    addEventListener('DOMContentLoaded',()=>{
+      const pct={"Lead volume":80,"Qualified rate":30,"Response time":90,"Content velocity":60,"Flow uptime":99,"Bug turnaround":85};
+      document.querySelectorAll('[data-kpi]').forEach(el=>{ el.style.width=(pct[el.dataset.kpi]||0)+'%'; });
+    });
+  </script>
+</head>
+<body>
+  <main class="page">
+    <section class="sheet grid" aria-label="One‑page infographic handout">
+
+      <!-- HERO -->
+      <section class="card subtle hero">
+        <div>
+          <div class="label"><span class="num">0</span><strong>Executive Summary</strong></div>
+          <h1>Gold Palm — Engagement Summary</h1>
+          <p class="lead">This document presents the client’s proposal alongside the contractor’s counter‑demands. It clarifies scope, price, cadence, risk controls, and compliance. Use the comparison table to confirm alignment, then approve the acceptance section.</p>
+          <div class="kv" style="grid-template-columns:220px 1fr; margin-top:8px">
+            <div><strong>Engagement focus</strong></div><div>Lead generation, automation, website content, training, support</div>
+            <div><strong>Rate (ask)</strong></div><div>$1,250 weekly · deposit 50% of first week · pay Fridays</div>
+            <div><strong>Classification</strong></div><div>1099 independent contractor</div>
+            <div><strong>Term</strong></div><div>Six‑month increments · performance‑based renewal</div>
+          </div>
+        </div>
+        <div class="stats" aria-label="Commercial snapshot">
+          <div class="stat"><small>Weekly rate</small><b>$1,250</b></div>
+          <div class="stat"><small>Deposit</small><b>50% of week‑one</b></div>
+          <div class="stat"><small>Payment</small><b>Fridays</b></div>
+          <div class="stat"><small>Taxes</small><b>Withhold or 25–30% gross‑up</b></div>
+        </div>
+      </section>
+
+      <!-- SCOPE -->
+      <section class="card">
+        <div class="label"><span class="num">1</span><strong>Scope</strong></div>
+        <div class="icons">
+          <div class="ico"><div class="dot">L</div><div>Lead Gen</div></div>
+          <div class="ico"><div class="dot">R</div><div>Research & Learn</div></div>
+          <div class="ico"><div class="dot">A</div><div>Automation (Twilio/Zapier)</div></div>
+          <div class="ico"><div class="dot">W</div><div>Website Content Redesign</div></div>
+          <div class="ico"><div class="dot">T</div><div>Training</div></div>
+          <div class="ico"><div class="dot">S</div><div>Support</div></div>
+        </div>
+      </section>
+
+      <!-- COMMERCIALS + OPERATING SPLIT -->
+      <section class="grid grid-main">
+        <div class="card">
+          <div class="label"><span class="num">2</span><strong>Commercials</strong></div>
+          <div class="twocol">
+            <ul>
+              <li><strong>$1,250/week</strong> rate</li>
+              <li><strong>50% deposit</strong> before start</li>
+            </ul>
+            <ul>
+              <li>Pay Fridays; <strong>10%</strong> late after 5 days</li>
+              <li>Taxes: withhold or gross‑up 25–30%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label"><span class="num">3</span><strong>Operating</strong></div>
+          <div class="twocol">
+            <ul>
+              <li>Output‑based delivery</li>
+              <li>Phone Sun–Thu 09:00–21:00 ET</li>
+              <li>Text best‑effort; not guaranteed</li>
+            </ul>
+            <ul>
+              <li>Tools: ChatGPT, Gemini provided</li>
+              <li>Learning grace for lead‑gen ramp</li>
+              <li>Change control for scope</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DELIVERABLES PIPELINE -->
+      <section class="card">
+        <div class="label"><span class="num">4</span><strong>Weekly Deliverables</strong></div>
+        <div class="pipeline">
+          <div class="step"><div class="n">1</div><div>Access & Audit</div></div>
+          <div class="step"><div class="n">2</div><div>Research & Learn</div></div>
+          <div class="step"><div class="n">3</div><div>Automations</div></div>
+          <div class="step"><div class="n">4</div><div>Lead Runs</div></div>
+          <div class="step"><div class="n">5</div><div>Content Redesign</div></div>
+          <div class="step"><div class="n">6</div><div>Training & Support</div></div>
+          <div class="step"><div class="n">7</div><div>Report</div></div>
+        </div>
+      </section>
+
+      <!-- KPIs with real numbers -->
+      <section class="card">
+        <div class="label"><span class="num">5</span><strong>KPIs</strong></div>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="row"><b>Lead volume</b><small>Target: 40 leads/week</small></div>
+            <div class="bar"><div class="fill" data-kpi="Lead volume"></div></div>
+            <div class="meta"><span>Baseline: 15</span><span>Goal: 40</span><span>Now: —</span></div>
+          </div>
+          <div class="kpi">
+            <div class="row"><b>Qualified rate</b><small>Target: ≥ 25%</small></div>
+            <div class="bar"><div class="fill" data-kpi="Qualified rate"></div></div>
+            <div class="meta"><span>Baseline: 10%</span><span>Goal: 25%</span><span>Now: —</span></div>
+          </div>
+          <div class="kpi">
+            <div class="row"><b>Response time</b><small>Target: 90% ≤ 24h</small></div>
+            <div class="bar"><div class="fill" data-kpi="Response time"></div></div>
+            <div class="meta"><span>Baseline: 65%</span><span>Goal: 90%</span><span>Now: —</span></div>
+          </div>
+          <div class="kpi">
+            <div class="row"><b>Content velocity</b><small>Target: 3 pages/week</small></div>
+            <div class="bar"><div class="fill" data-kpi="Content velocity"></div></div>
+            <div class="meta"><span>Baseline: 0</span><span>Goal: 3</span><span>Now: —</span></div>
+          </div>
+          <div class="kpi">
+            <div class="row"><b>Flow uptime</b><small>Target: ≥ 99%</small></div>
+            <div class="bar"><div class="fill" data-kpi="Flow uptime"></div></div>
+            <div class="meta"><span>Baseline: 96%</span><span>Goal: 99%</span><span>Now: —</span></div>
+          </div>
+          <div class="kpi">
+            <div class="row"><b>Bug turnaround</b><small>Target: ≤ 2 business days</small></div>
+            <div class="bar"><div class="fill" data-kpi="Bug turnaround"></div></div>
+            <div class="meta"><span>Baseline: 5 days</span><span>Goal: 2 days</span><span>Now: —</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTROLS + CONTACTS -->
+      <section class="grid grid-main">
+        <div class="card">
+          <div class="label"><span class="num">6</span><strong>Controls</strong></div>
+          <div class="badges">
+            <span class="badge">Mutual NDA · 24‑month survival</span>
+            <span class="badge">Ownership of final work transfers after full payment</span>
+            <span class="badge">Weekly plan in writing</span>
+            <span class="badge">Change control for scope</span>
+            <span class="badge">1099 compliance safeguards</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label"><span class="num">7</span><strong>Quick Contacts</strong></div>
+          <div class="kv">
+            <div>Decision‑maker</div><div>Alex</div>
+            <div>Notice method</div><div>Email · receipt required</div>
+            <div>Response time</div><div>2 business days</div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+</body>
+</html>
